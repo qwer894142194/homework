@@ -2,9 +2,11 @@ package com.lanou3g.dao;
 
 import com.lanou3g.main.User;
 import com.lanou3g.util.JdbcUtil;
+import jdk.nashorn.internal.scripts.JD;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -29,18 +31,24 @@ public class UserDao {
         return null;
     }
 
-    public  User queryAll1(){
-        String sql = "select * from  user";
+
+
+    public  Boolean queryAll1(String username ,String password) {
+        String sql = "select * from where username like " + username;
         Connection conn = null;
-        conn= JdbcUtil.getConnection();
+        conn = JdbcUtil.getConnection();
         try {
-            User user = qr.query(conn, sql, new BeanHandler<User>(User.class));
-            return  user;
+            User user = qr.query(conn, sql, new ScalarHandler<User>());
+            boolean b = user.getPassword().equals(password);
+            if (b==true){
+                return  true;
+            }else {
+                return false;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return  null;
+            return false;
     }
 
     public void insertUser(User user){
@@ -59,4 +67,19 @@ public class UserDao {
     }
 
 
+    public User queryByUsername(String username) {
+        Connection conn = JdbcUtil.getConnection();
+        String sql ="select * from user where username=?";
+        try {
+            User user = qr.query(conn, sql + username, new BeanHandler<User>(User.class));
+            System.out.println(user);
+            return user;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JdbcUtil.close(conn);
+
+        }
+                return null;
+    }
 }
