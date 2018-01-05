@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网易云</title>
+    <style type="text/css">
+        .div1{
+            width:100%;
+            height:100px;
+            line-height: 100px;
+            background-color: antiquewhite;
+            font-size: 30px;
+        }
+        .div2{
+            width: 800px;
+            height:500px;
+            position: fixed;
+            left:35%;
+            top: 35%;
+            background-color: whitesmoke;
+        }
+        .input{
+            margin-left: 31%;
+            margin-top: 10%;
+            margin-bottom: 3%;
+            width: 300px;height: 40px;
+            font-size:20px;
+        }
+        .input1{
+            margin-left: 1%;
+            margin-top: 2%;
+            margin-bottom: 3%;
+            width: 300px;height: 40px;
+            font-size:20px;
+        }
+        .span{
+
+            margin-left: 30%;
+            font-size: 20px;
+        }
+        .a{
+            color: #317EF3;
+            font-size: 16px;
+            margin-left:10px;
+            text-decoration: none;
+        }
+        .a2{
+            text-decoration: none;
+        }
+        .span2{
+            font-size: 35px;
+            margin-left: 80px;
+        }
+        .span3{
+            font-size: 20px;
+            margin-left: 19%;
+        }
+        .span4{
+            font-size: 20px;
+            margin-left: 19%;
+        }
+        .button{
+            width: 300px;height: 40px;
+            background-color: #317EF3;
+            font-size: 30px;
+            line-height: 40px;
+            margin-left: 30%;
+            margin-top: 4%
+        }
+        .prompt{
+            color: #FF0000;
+            font-size: 20px;
+            margin-left: 5%;
+            visibility: hidden;
+
+        }
+    </style>
+</head>
+<body>
+<div class="div1"><span class="span2" >网易云</span> 账号注册</div>
+
+<div >
+<div class="div2">
+        <form action="register" method="post">
+
+            <input type="text" placeholder="邮箱注册" class="input">
+            <a href=# class="a">邮箱号注册</a>
+    <br>
+            <span class="span3" >邮箱注册:</span>
+
+            <input type="text"  class="input1" name="username" id="input_id" onfocus="onFocus()" onblur="onBlur()">
+
+            <span class="prompt" id="text">请输入用户名</span>
+    <br>
+    <span class="span4">登录密码:</span>
+
+            <input type="text"  class="input1" onfocus="onFocus1()" onblur="onBlur1()" name="password">
+
+
+            <span class="prompt" id="text1">请输入密码</span>
+    <br>
+    <span class="span">
+        <input type="checkbox" name="同意"> 同意并遵守
+        <a href=# class="a2"> << 服务条框 >> </a>
+    </span>
+    <button class="button" id="btn" onmousedown="mousedown()" onmouseup="mouseup()">下一步</button>
+        </form>
+
+</div>
+</div>
+</body>
+        <script type="text/javascript">
+            document.write(Date().toLocaleString());
+
+            function mousedown() {
+                    var btn = document.getElementById("btn");
+                    btn.style.backgroundColor="green";
+                }
+                function mouseup() {
+                    var btn = document.getElementById("btn");
+                    btn.style.backgroundColor="#317EF3";
+                }
+                function onFocus() {
+                    var text = document.getElementById("text");
+
+                    text.style.visibility = "visible";
+                }
+                function onBlur() {
+                    var text = document.getElementById("text");
+                    text.style.visibility = "hidden";
+
+                }
+
+                function onFocus1() {
+                    var text = document.getElementById("text1");
+                    text.style.visibility = "visible";
+                }
+                function onBlur1() {
+                    var text = document.getElementById("text1");
+                    text.style.visibility = "hidden";
+                }
+        </script>
+</html>
