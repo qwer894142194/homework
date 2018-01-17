@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.dtd">
+<validators>
+    <!--
+        指定要验证哪个属性
+    -->
+    <field name="user.username">
+        <field-validator type="required">
+            <param name="messageKey">username</param>
+            <message>name不能为空</message>
+        </field-validator>
+        <field-validator type="requiredstring">
+            <message>name不能为空的字符串</message>
+        </field-validator>
+        <field-validator type="stringlength">
+            <param name="minLength">6</param>
+            <param name="maxLength">15</param>
+            <message>用户名长度应在6到15个字符间</message>
+        </field-validator>
+    </field>
+    <field name="user.password">
+        <field-validator type="requiredstring">
+            <param name="messageKey">password</param>
+            <message>密码不能为空字符串</message>
+        </field-validator>
+        <field-validator type="required">
+            <message>密码不能为空</message>
+        </field-validator>
+
+        <field-validator type="stringlength"> <!-- 字符串长度校验器 -->
+            <param name="minLength">4</param>
+            <param name="maxLength">15</param>
+            <message>为了您账号的安全，请设置4个字母以上的密码（最长可设置15个字母）</message>
+        </field-validator>
+    </field>
+
+    <field name="user.phoneNum">
+        <field-validator type="regex">
+
+                <param name="regex"><![CDATA[[1][34578]\d{9}]]>
+                </param>
+            <message>手机号不正确</message>
+        </field-validator>
+    </field>
+    <field name="user.email">
+        <field-validator type="email">
+            <param name="messageKey">email</param>
+            <message>邮箱号不正确</message>
+        </field-validator>
+    </field>
+</validators>
